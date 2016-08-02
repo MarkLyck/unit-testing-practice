@@ -43,7 +43,7 @@ const CartItem = React.createClass({
       <li className="cart-item">
         <h3 className="item-name">{this.state.item.name}</h3>
         <h3 className="item-price">{this.state.item.price}</h3>
-        <input onKeyUp={this.updateQuantity} type="number" placeholder={this.state.item.quantity} ref="quantity"/>
+        <input id="quantity-input" onKeyUp={this.updateQuantity} type="number" placeholder={this.state.item.quantity} ref="quantity"/>
         <button onClick={this.removeItem} className="remove-item">X</button>
       </li>
     )
