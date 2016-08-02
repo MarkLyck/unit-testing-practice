@@ -3,6 +3,7 @@ import store from '../store'
 
 const CartItem = React.createClass({
   removeItem: function() {
+    console.log('ITEM PROPS: ', this.props.item);
     store.cart.removeItem(this.props.item)
   },
   render: function() {

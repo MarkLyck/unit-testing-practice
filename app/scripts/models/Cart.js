@@ -18,9 +18,11 @@ const Cart = Backbone.Model.extend({
     this.trigger('change')
   },
   removeItem: function(item) {
+    console.log('PASSED ITEM: ', item);
     let cartItems = this.get('items')
-    cartItems = cartItems.map((loopItem) => {
-      if (loopItem.name !== item.name) {
+    console.log('cartItems: ', cartItems);
+    cartItems = cartItems.filter((loopItem) => {
+      if (loopItem.id !== item.id) {
         return loopItem
       }
     })

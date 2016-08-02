@@ -17,7 +17,6 @@ const CartList = React.createClass({
     store.cart.off('change', this.updateCart)
   },
   render: function() {
-    console.log(store.cart);
     let cartItems = this.state.cartItems.map((item,i) => {
       return (<CartItem item={item} key={i}/>)
     })
@@ -26,7 +25,7 @@ const CartList = React.createClass({
         <ul className="cart-list">
           {cartItems}
         </ul>
-        <h3 className="total">{this.state.total}</h3>
+        <h3 className="total">${this.state.total.toFixed(2)}</h3>
       </div>
     )
   }
