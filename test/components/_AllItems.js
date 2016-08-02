@@ -4,6 +4,7 @@ import { expect } from 'chai';
 import React from 'react'
 
 import AllItems from '../../app/scripts/components/AllItems'
+import data from '../../app/scripts/data'
 
 
 describe('<AllItems /> component', function() {
@@ -16,4 +17,7 @@ describe('<AllItems /> component', function() {
   it('should have a class of "all-items"', () => {
     expect(allItems.hasClass('all-items')).to.be.true;
   });
+  it('should have 1 child for each data item', () => {
+    expect(allItems.children().length).to.equal(data.length)
+  })
 })

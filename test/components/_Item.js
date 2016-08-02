@@ -14,10 +14,6 @@ describe('<Item /> component', function() {
     price: 2
   })
 
-  function addToCart(item) {
-    console.log('test', item);
-  }
-
   let item = shallow(<Item item={itemData}/>);
 
   let itemWithoutProps = shallow(<Item/>);
