@@ -3,7 +3,8 @@ import store from '../store'
 
 const Item = React.createClass({
   addToCart: function() {
-    store.cart.addItem(this.props.item.toJSON())
+    let item = this.props.item.toJSON()
+    store.cart.addItem(item)
   },
   render: function() {
     if (!this.props.item) {

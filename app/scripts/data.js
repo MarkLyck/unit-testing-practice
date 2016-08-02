@@ -16,7 +16,7 @@ let data = [
   },
   {
     id: 4,
-    name: 'golf bal',
+    name: 'golf ball',
     price: 0.5
   },
   {

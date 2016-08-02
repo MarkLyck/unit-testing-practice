@@ -13,4 +13,13 @@ describe('<App /> component', function() {
     expect(app.is('div')).to.be.true;
     expect(app.is('input')).to.be.false;
   });
+
+  it('should render children when passed in', () => {
+   const app = shallow(
+     <app>
+       <div className="unique" />
+     </app>
+   );
+   expect(app.contains(<div className="unique" />)).to.be.true;
+ });
 })

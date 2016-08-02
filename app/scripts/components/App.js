@@ -7,9 +7,9 @@ const App = React.createClass({
   render: function() {
     return (
       <div>
-        App
         <AllItems/>
         <CartList/>
+        {this.props.children}
       </div>
     )
   }

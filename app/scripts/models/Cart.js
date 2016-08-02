@@ -15,9 +15,7 @@ const Cart = Backbone.Model.extend({
     this.updateTotal()
   },
   removeItem: function(item) {
-    console.log('PASSED ITEM: ', item);
     let cartItems = this.get('items')
-    console.log('cartItems: ', cartItems);
     cartItems = cartItems.filter((loopItem) => {
       if (loopItem.id !== item.id) {
         return loopItem
@@ -28,7 +26,6 @@ const Cart = Backbone.Model.extend({
     this.updateTotal()
   },
   updateTotal: function() {
-    console.log('UPDATING TOTAL');
     let newTotal = 0
     let cartItems = this.get('items')
     cartItems.forEach(item => {
@@ -36,6 +33,15 @@ const Cart = Backbone.Model.extend({
     })
     this.set('total', newTotal)
     this.trigger('change')
+  },
+  findItem(itemToFind) {
+    let items = this.get('items')
+    items = items.filter((item) => {
+      if (item.id === itemToFind.id) {
+        return item
+      }
+    })
+    return items[0]
   }
 })
 

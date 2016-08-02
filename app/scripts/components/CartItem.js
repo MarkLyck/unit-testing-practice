@@ -2,27 +2,23 @@ import React from 'react'
 import store from '../store'
 
 const CartItem = React.createClass({
-  findCorrectItem: function() {
-    let itemToSet = store.cart.get('items')
-    itemToSet = itemToSet.filter((item) => {
-      if (item.id === this.props.item.id) {
-        return item
-      }
-    })
-    return itemToSet[0]
-  },
   getInitialState: function() {
-    return {item: this.findCorrectItem}
+    let stateItem = store.cart.findItem(this.props.item)
+    console.log('INITIAL STATE ITEM: ', stateItem);
+    return {item: stateItem}
+
   },
   removeItem: function() {
     store.cart.removeItem(this.props.item)
   },
   updateItem: function() {
-    console.log('UPDATING ITEM');
-    this.setState({item: this.findCorrectItem})
+    let stateItem = store.cart.findItem(this.props.item)
+    if (stateItem) {
+      this.setState({item: stateItem})
+    }
+    console.log('State after update: ', this.state.item);
   },
   updateQuantity: function() {
-    console.log('UPDATING QUANITITY');
     let storeItems = store.cart.get('items')
     storeItems = storeItems.map((item) => {
       if (item.id === this.props.item.id) {
@@ -30,7 +26,6 @@ const CartItem = React.createClass({
       }
       return item
     })
-    console.log('storeItems: ', storeItems);
     store.cart.set('items', storeItems)
     store.cart.updateTotal()
   },
@@ -41,7 +36,7 @@ const CartItem = React.createClass({
     store.cart.off('change', this.updateItem)
   },
   render: function() {
-    if (!this.props.item) {
+    if (!this.state.item) {
       return null
     }
     return (

@@ -18,7 +18,7 @@ describe('<Item /> component', function() {
     console.log('test', item);
   }
 
-  let item = shallow(<Item item={itemData} addToCart={addToCart}/>);
+  let item = shallow(<Item item={itemData}/>);
   // let item = shallow(<Item item={{
   //   id: 1,
   //   name: 'Tennis Ball',
@@ -42,4 +42,28 @@ describe('<Item /> component', function() {
   it('should not have a class of "item"', () => {
     expect(itemWithoutProps.hasClass('cart-item')).to.be.false
   });
+
+  it('should have an <h3> with a class of "item-name" in it', () => {
+    expect(item.find('.item-name')).to.have.length(1);
+    expect(item.find('.item-name').is('h3')).to.be.true
+  })
+
+  it('"item-name" should have text in it', () => {
+    expect(item.find('.item-name').text()).to.not.equal('');
+  })
+
+  it('should have an <h3> with a class of "item-price" in it', () => {
+    expect(item.find('.item-price')).to.have.length(1);
+    expect(item.find('.item-name').is('h3')).to.be.true
+  })
+
+  it('"item-price" should have text in it', () => {
+    expect(item.find('.item-price').text()).to.not.equal('');
+  })
+
+  it('should have a <button> with a class of "add-to-cart" in it', () => {
+    expect(item.find('.add-to-cart')).to.have.length(1);
+    expect(item.find('.add-to-cart').is('button')).to.be.true
+  })
+
 })
