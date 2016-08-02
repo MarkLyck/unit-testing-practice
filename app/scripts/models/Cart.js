@@ -8,14 +8,11 @@ const Cart = Backbone.Model.extend({
   },
   addItem: function(item) {
     let cartItems = this.get('items')
+    item.quantity = 1
     cartItems.push(item)
     this.set('items', cartItems)
 
-    let total = this.get('total')
-    total += item.price
-    this.set('total', total)
-
-    this.trigger('change')
+    this.updateTotal()
   },
   removeItem: function(item) {
     console.log('PASSED ITEM: ', item);
@@ -28,10 +25,16 @@ const Cart = Backbone.Model.extend({
     })
     this.set('items', cartItems)
 
-    let total = this.get('total')
-    total -= item.price
-    this.set('total', total)
-
+    this.updateTotal()
+  },
+  updateTotal: function() {
+    console.log('UPDATING TOTAL');
+    let newTotal = 0
+    let cartItems = this.get('items')
+    cartItems.forEach(item => {
+      newTotal += (item.price * item.quantity)
+    })
+    this.set('total', newTotal)
     this.trigger('change')
   }
 })
