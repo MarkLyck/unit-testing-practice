@@ -17,6 +17,7 @@ const CartList = React.createClass({
     store.cart.off('change', this.updateCart)
   },
   render: function() {
+    console.log(store.cart);
     let cartItems = this.state.cartItems.map((item,i) => {
       return (<CartItem item={item} key={i}/>)
     })
