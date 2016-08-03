@@ -58,6 +58,8 @@ describe('<Item /> component', function() {
   })
 
   it('Clicking .add-to-cart should add the item from the cart', () => {
+    store.cart.set('items', [])
+    store.cart.set('total', 0)
     let oldCartItems = store.cart.get('items')
     item.find('.add-to-cart').simulate('click');
     expect(store.cart.get('items').length).to.equal(1)

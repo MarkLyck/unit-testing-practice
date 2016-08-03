@@ -15,7 +15,6 @@ const CartItem = React.createClass({
     if (stateItem) {
       this.setState({item: stateItem})
     }
-    console.log('State after update: ', this.state.item);
   },
   updateQuantity: function() {
     let storeItems = store.cart.get('items')

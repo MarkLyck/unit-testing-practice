@@ -67,4 +67,16 @@ describe('<CartItem /> component', function() {
     cartItem.find('.remove-item').simulate('click');
     expect(store.cart.get('items').length).to.equal(oldCartItems.length - 1)
   })
+
+  // Simulating keyUp event seems to break it...
+  // it('changing quanitity should update total', () => {
+  //   expect(store.cart.addItem(testItem.toJSON()));
+  //   cartItem.setState({item: testItem.toJSON() });
+  //   let oldTotal = store.cart.get('total')
+  //   console.log('oldTotal: ', oldTotal);
+  //   cartItem.find('#quantity-input').simulate('keyUp', {keyCode: 52});
+  //   // cartItem.find('#quantity-input').Simulate.keyUp(input, {keyCode : 52});
+  //   console.log('input: ');
+  //   expect(store.cart.get('total')).to.be.above(oldTotal)
+  // })
 })
