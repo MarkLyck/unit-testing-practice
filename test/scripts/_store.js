@@ -24,12 +24,17 @@ describe('store', function() {
 describe('store.cart', function() {
   let testItem = store.shopItems.get('1')
 
+
+
   it('should be an instance of Cart', () => {
     expect(store.cart).to.be.instanceOf(Cart)
     expect(store.cart).to.not.be.instanceOf(ShopItems)
   })
 
   it('should have a default total of 0', () => {
+    store.cart.set('items', [])
+    store.cart.set('total', 0)
+
     expect(store.cart.get('total')).to.be.equal(0)
     expect(store.cart.get('total')).to.not.equal(100)
   });

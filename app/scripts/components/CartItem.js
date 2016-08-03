@@ -4,7 +4,6 @@ import store from '../store'
 const CartItem = React.createClass({
   getInitialState: function() {
     let stateItem = store.cart.findItem(this.props.item)
-    console.log('INITIAL STATE ITEM: ', stateItem);
     return {item: stateItem}
 
   },

@@ -3,6 +3,8 @@ import { expect } from 'chai';
 
 import React from 'react'
 
+import store from '../../app/scripts/store'
+
 import Item from '../../app/scripts/components/Item'
 import ShopItem from '../../app/scripts/models/ShopItem'
 
@@ -53,6 +55,12 @@ describe('<Item /> component', function() {
   it('should have a <button> with a class of "add-to-cart" in it', () => {
     expect(item.find('.add-to-cart')).to.have.length(1);
     expect(item.find('.add-to-cart').is('button')).to.be.true
+  })
+
+  it('Clicking .add-to-cart should add the item from the cart', () => {
+    let oldCartItems = store.cart.get('items')
+    item.find('.add-to-cart').simulate('click');
+    expect(store.cart.get('items').length).to.equal(1)
   })
 
 })

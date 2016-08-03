@@ -59,4 +59,12 @@ describe('<CartItem /> component', function() {
     expect(cartItem.find('#quantity-input')).to.have.length(1);
     expect(cartItem.find('#quantity-input').is('input')).to.be.true
   })
+
+  it('Clicking .remove-item should remove the item from the cart', () => {
+    expect(store.cart.addItem(testItem.toJSON()));
+    cartItem.setState({item: testItem.toJSON() });
+    let oldCartItems = store.cart.get('items')
+    cartItem.find('.remove-item').simulate('click');
+    expect(store.cart.get('items').length).to.equal(oldCartItems.length - 1)
+  })
 })
